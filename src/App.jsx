@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewProject from "./components/NewProject";
 import NoProjectSelected from "./components/NoProjectSelected";
 import ProjectsSidebar from "./components/ProjectsSidebar";
 import SelectedProject from "./components/SelectedProject";
 
 function App() {
-  const [projectsState, setProjectsState] = useState({
-    selectedProjectId: undefined,
-    projects: [],
-    tasks: [],
+  const [projectsState, setProjectsState] = useState(() => {
+    const savedData = localStorage.getItem("projectManagerData");
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          selectedProjectId: undefined,
+          projects: [],
+          tasks: [],
+        };
   });
+
+  useEffect(() => {
+    localStorage.setItem("projectManagerData", JSON.stringify(projectsState));
+  }, [projectsState]);
 
   function handleAddTask(text) {
     setProjectsState((prevState) => {
@@ -94,6 +103,7 @@ function App() {
   const selectedProject = projectsState.projects.find(
     (project) => project.id === projectsState.selectedProjectId
   );
+
   let content = (
     <SelectedProject
       project={selectedProject}
