@@ -5,10 +5,8 @@ A React-based task/project management app to organize and manage your tasks effi
 ## Features
 
 - Add, edit, and delete tasks with ease
-- Mark tasks as completed or pending
-- Filter tasks by status (completed or pending)
 - Responsive and user-friendly interface
-- Data persistence via localStorage (optional, if you add it later)
+- Data persistence via localStorage
 
 ## Tech Stack
 
@@ -19,9 +17,10 @@ A React-based task/project management app to organize and manage your tasks effi
 ## Installation
 
 1. Clone the repo:
-   ```bash
-   git clone https://github.com/johnisjuan/project-mang-react.git
-   cd project-mang-react
+```bash
+git clone https://github.com/johnisjuan/project-mang-react.git
+cd project-mang-react
+```
    
 2. Install dependencies:
 ```bash
